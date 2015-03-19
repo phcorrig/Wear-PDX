@@ -219,6 +219,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
         }
         else{
             Toast.makeText(getActivity(), getActivity().getString(R.string.network_unavailable), Toast.LENGTH_LONG).show();
+            mSwipeRefreshLayout.setRefreshing(false);
         }
     }
 
@@ -297,6 +298,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
         }
         else{
             Toast.makeText(getActivity(), getActivity().getString(R.string.network_unavailable), Toast.LENGTH_LONG).show();
+            mSwipeRefreshLayout.setRefreshing(false);
         }
     }
 

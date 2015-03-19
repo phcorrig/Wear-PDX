@@ -92,6 +92,7 @@ public class ArrivalsFragment extends Fragment {
         ButterKnife.inject(this, rootView);
 
         mSwipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
+
         mArrivalsListView.setEmptyView(mEmptyText);
 
         Intent intent = getActivity().getIntent();
@@ -226,6 +227,7 @@ public class ArrivalsFragment extends Fragment {
         }
         else{
             Toast.makeText(getActivity(), getActivity().getString(R.string.network_unavailable), Toast.LENGTH_LONG).show();
+            mSwipeRefreshLayout.setRefreshing(false);
         }
     }
 
