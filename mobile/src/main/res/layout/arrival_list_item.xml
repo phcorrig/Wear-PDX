@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         tools:text="New Text"
-        android:id="@+id/arrival_item_stop_name"
+        android:id="@+id/arrivalItemStopNameText"
         android:layout_weight="1"
         android:textSize="16dp" />
 
@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:text="05:01"
-        android:id="@+id/arrival_item_time"
+        android:id="@+id/arrivalTimeText"
         android:textSize="20dp"
         android:textStyle="bold" />
 </LinearLayout>

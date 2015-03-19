@@ -54,7 +54,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
 
     public final static String INTENT_LIST = "ArrivalList";
     public final static String INTENT_DIRECTION = "ArrivalDirection";
-    public final static String INTENT_STOP_ID = "StopID";
+    public final static String INTENT_STOP_NAME = "StopName";
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
@@ -104,18 +104,13 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
 
         mStopListView.setEmptyView(mEmptyText);
 
-
-
-
-
-
         mStopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getActivity(), ArrivalsActivity.class);
                 intent.putParcelableArrayListExtra(INTENT_LIST, mStops.get(position).getArrivalInfoArrayList());
                 intent.putExtra(INTENT_DIRECTION, mStops.get(position).getDirection());
-                intent.putExtra(INTENT_STOP_ID, mStops.get(position).getLocationId());
+                intent.putExtra(INTENT_STOP_NAME, mStops.get(position).getStopName());
                 startActivity(intent);
             }
         });
@@ -272,6 +267,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
 
                                     StopsAdapter adapter = new StopsAdapter(getActivity(), mStops);
                                     mStopListView.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
                                 }
                             });
 

@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -17,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.patrickcorriganjr.wearpdx.adapters.ArrivalsAdapter;
 import com.patrickcorriganjr.wearpdx.data.ArrivalInfo;
 import com.patrickcorriganjr.wearpdx.R;
 
@@ -46,8 +46,8 @@ public class ArrivalsFragment extends Fragment {
     @InjectView(R.id.stopDirection)
     TextView mDirectionText;
 
-    @InjectView(R.id.stopLocationId)
-    TextView mStopIdText;
+    @InjectView(R.id.stopLocationName)
+    TextView mStopNameText;
 
     public ArrivalsFragment() {
     }
@@ -80,11 +80,11 @@ public class ArrivalsFragment extends Fragment {
         if(intent != null){
             mArrivals = intent.getParcelableArrayListExtra(StopsFragment.INTENT_LIST);
             mDirection = intent.getStringExtra(StopsFragment.INTENT_DIRECTION);
-            mStopId = intent.getStringExtra(StopsFragment.INTENT_STOP_ID);
+            mStopId = intent.getStringExtra(StopsFragment.INTENT_STOP_NAME);
         }
 
         mDirectionText.setText(mDirection);
-        mStopIdText.setText(mStopId);
+        mStopNameText.setText(mStopId);
 
         return rootView;
     }
@@ -94,11 +94,13 @@ public class ArrivalsFragment extends Fragment {
         super.onResume();
 
 
-        //refresh();
+        refresh();
     }
 
     private void refresh() {
-
+        ArrivalsAdapter adapter = new ArrivalsAdapter(getActivity(), mArrivals);
+        mArrivalsListView.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
     }
 
     SwipeRefreshLayout.OnRefreshListener mOnRefreshListener = new SwipeRefreshLayout.OnRefreshListener() {
