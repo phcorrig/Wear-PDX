@@ -1,8 +1,6 @@
-package com.patrickcorriganjr.wearpdx;
+package com.patrickcorriganjr.wearpdx.data;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
 /**
  * Created by Bag Boy Rebel on 3/16/2015.

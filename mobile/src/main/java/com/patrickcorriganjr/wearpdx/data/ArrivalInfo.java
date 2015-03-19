@@ -1,4 +1,4 @@
-package com.patrickcorriganjr.wearpdx;
+package com.patrickcorriganjr.wearpdx.data;
 
 import android.os.Parcel;
 import android.os.Parcelable;

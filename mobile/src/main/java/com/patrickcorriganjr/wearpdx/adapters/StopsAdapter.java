@@ -1,15 +1,16 @@
-package com.patrickcorriganjr.wearpdx;
+package com.patrickcorriganjr.wearpdx.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.patrickcorriganjr.wearpdx.R;
+import com.patrickcorriganjr.wearpdx.data.StopInfo;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Bag Boy Rebel on 3/17/2015.

@@ -1,7 +1,9 @@
-package com.patrickcorriganjr.wearpdx;
+package com.patrickcorriganjr.wearpdx.adapters;
 
 import android.content.Context;
 import android.widget.ArrayAdapter;
+
+import com.patrickcorriganjr.wearpdx.data.ArrivalInfo;
 
 import java.util.List;
 

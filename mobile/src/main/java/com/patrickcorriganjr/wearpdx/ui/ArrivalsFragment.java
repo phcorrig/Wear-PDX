@@ -1,4 +1,4 @@
-package com.patrickcorriganjr.wearpdx;
+package com.patrickcorriganjr.wearpdx.ui;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -15,6 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.patrickcorriganjr.wearpdx.data.ArrivalInfo;
+import com.patrickcorriganjr.wearpdx.R;
 
 import java.util.ArrayList;
 
@@ -70,7 +74,6 @@ public class ArrivalsFragment extends Fragment {
         ButterKnife.inject(this, rootView);
 
         mSwipeRefreshLayout.setOnRefreshListener(mOnRefreshListener);
-
         mArrivalsListView.setEmptyView(mEmptyText);
 
         Intent intent = getActivity().getIntent();
@@ -80,10 +83,18 @@ public class ArrivalsFragment extends Fragment {
             mStopId = intent.getStringExtra(StopsFragment.INTENT_STOP_ID);
         }
 
-        //refresh();
-
+        mDirectionText.setText(mDirection);
+        mStopIdText.setText(mStopId);
 
         return rootView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+
+        //refresh();
     }
 
     private void refresh() {

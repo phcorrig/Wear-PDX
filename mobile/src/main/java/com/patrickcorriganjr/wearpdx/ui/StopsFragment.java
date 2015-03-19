@@ -1,22 +1,12 @@
-package com.patrickcorriganjr.wearpdx;
+package com.patrickcorriganjr.wearpdx.ui;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.location.Criteria;
 import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
-import android.location.LocationProvider;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
-import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.util.Log;
@@ -33,9 +23,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.gson.Gson;
+import com.patrickcorriganjr.wearpdx.data.ArrivalInfo;
+import com.patrickcorriganjr.wearpdx.R;
+import com.patrickcorriganjr.wearpdx.data.StopInfo;
+import com.patrickcorriganjr.wearpdx.adapters.StopsAdapter;
+import com.patrickcorriganjr.wearpdx.TrimetConstants;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -46,16 +39,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -117,6 +104,11 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
 
         mStopListView.setEmptyView(mEmptyText);
 
+
+
+
+
+
         mStopListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -134,10 +126,15 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
                 .addApi(LocationServices.API)
                 .build();
 
-        refresh();
-
-
         return rootView;
+    }
+
+    @Override
+    public void onResume()
+    {
+        super.onResume();
+
+        refresh();
     }
 
     private void refresh() {
