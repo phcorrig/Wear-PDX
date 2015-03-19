@@ -55,6 +55,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
     public final static String INTENT_LIST = "ArrivalList";
     public final static String INTENT_DIRECTION = "ArrivalDirection";
     public final static String INTENT_STOP_NAME = "StopName";
+    public final static String INTENT_STOP_ID = "StopId";
 
     private GoogleApiClient mGoogleApiClient;
     private Location mLastLocation;
@@ -111,6 +112,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
                 intent.putParcelableArrayListExtra(INTENT_LIST, mStops.get(position).getArrivalInfoArrayList());
                 intent.putExtra(INTENT_DIRECTION, mStops.get(position).getDirection());
                 intent.putExtra(INTENT_STOP_NAME, mStops.get(position).getStopName());
+                intent.putExtra(INTENT_STOP_ID, mStops.get(position).getLocationId());
                 startActivity(intent);
             }
         });
