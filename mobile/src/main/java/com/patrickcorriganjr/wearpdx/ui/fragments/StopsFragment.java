@@ -1,12 +1,14 @@
-package com.patrickcorriganjr.wearpdx.ui;
+package com.patrickcorriganjr.wearpdx.ui.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.location.Location;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.preference.PreferenceManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.TextUtils;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.patrickcorriganjr.wearpdx.R;
 import com.patrickcorriganjr.wearpdx.data.StopInfo;
 import com.patrickcorriganjr.wearpdx.adapters.StopsAdapter;
 import com.patrickcorriganjr.wearpdx.TrimetConstants;
+import com.patrickcorriganjr.wearpdx.ui.activities.ArrivalsActivity;
 import com.squareup.okhttp.Call;
 import com.squareup.okhttp.Callback;
 import com.squareup.okhttp.OkHttpClient;
@@ -63,6 +66,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
     private double mLongitude;
     private int mRadius;
     private ArrayList<StopInfo> mStops;
+    private SharedPreferences mSharedPreferences;
 
     @InjectView(R.id.swipeLayout)
     SwipeRefreshLayout mSwipeRefreshLayout;
@@ -97,7 +101,8 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
 
         ButterKnife.inject(this, rootView);
 
-        mRadius = 200;
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(getActivity());
+
         mLatitude = 45.5138850;
         mLongitude = -122.6828660;
 
@@ -130,6 +135,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
     public void onResume()
     {
         super.onResume();
+        mRadius = mSharedPreferences.getInt(getString(R.string.pref_radius_key), 200);
 
         refresh();
     }
@@ -150,6 +156,7 @@ public class StopsFragment extends Fragment implements GoogleApiClient.Connectio
     };
 
     public void getStops(double latitude, double longitude) throws MalformedURLException {
+
         URL url = new URL("http://developer.trimet.org/ws/V1/stops/ll/" + latitude + "," + longitude + "/meters/" + mRadius + "/appID/" + TrimetConstants.API_KEY + "/json/true");
         Log.d(TAG, url.toString());
 

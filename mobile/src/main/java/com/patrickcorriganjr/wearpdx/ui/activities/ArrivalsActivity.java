@@ -1,4 +1,4 @@
-package com.patrickcorriganjr.wearpdx.ui;
+package com.patrickcorriganjr.wearpdx.ui.activities;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -6,17 +6,18 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.patrickcorriganjr.wearpdx.R;
+import com.patrickcorriganjr.wearpdx.ui.fragments.ArrivalsFragment;
 
 
-public class MainActivity extends ActionBarActivity {
+public class ArrivalsActivity extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_arrivals);
         if (savedInstanceState == null) {
             getFragmentManager().beginTransaction()
-                    .add(R.id.container, new StopsFragment())
+                    .add(R.id.container, new ArrivalsFragment())
                     .commit();
         }
     }
@@ -25,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_arrivals, menu);
         return true;
     }
 

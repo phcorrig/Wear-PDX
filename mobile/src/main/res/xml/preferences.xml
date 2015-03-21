@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.patrickcorriganjr.wearpdx.NumberPickerPreference
+        android:key="@string/pref_radius_key"
+        android:title="@string/pref_radius_title"
+        android:summary="@string/pref_radius_summary"
+        android:defaultValue="200"/>
+
+</PreferenceScreen>

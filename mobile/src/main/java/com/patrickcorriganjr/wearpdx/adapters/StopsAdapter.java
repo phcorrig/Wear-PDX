@@ -34,7 +34,7 @@ public class StopsAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public StopInfo getItem(int position) {
         return mStops.get(position);
     }
 

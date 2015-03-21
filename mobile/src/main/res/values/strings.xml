@@ -8,7 +8,6 @@
     <string name="title_activity_settings">Settings</string>
     <string name="pref_title_search_radius">Radius</string>
     <string name="pref_summary_search_radius">The size of the stop search radius in meters</string>
-    <string name="pref_key_search_radius">radius</string>
     <string name="pref_radius_default">200</string>
     <string name="no_stop_line_1">No stop info</string>
     <string name="no_stop_line_2">available</string>
@@ -18,5 +17,11 @@
     <string name="json_error">There was a problem with the transit data</string>
 
     <string name="hello_world">Hello world!</string>
+    <string name="pref_radius_key">pref_radius</string>
+    <string name="pref_radius_title">Search Radius</string>
+    <string name="pref_radius_summary">The radius from your current location to search for stops.</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.patrickcorriganjr.wearpdx.ui;
+package com.patrickcorriganjr.wearpdx.ui.fragments;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -7,7 +7,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +20,6 @@ import android.widget.Toast;
 
 import com.patrickcorriganjr.wearpdx.TrimetConstants;
 import com.patrickcorriganjr.wearpdx.adapters.ArrivalsAdapter;
-import com.patrickcorriganjr.wearpdx.adapters.StopsAdapter;
 import com.patrickcorriganjr.wearpdx.data.ArrivalInfo;
 import com.patrickcorriganjr.wearpdx.R;
 import com.squareup.okhttp.Call;
